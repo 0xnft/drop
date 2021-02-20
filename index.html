@@ -77,7 +77,8 @@
         }
 
 
-        Promise.all([getPrices(), getGasFees()]).then(obj => {
+        setInterval(() => {
+            Promise.all([getPrices(), getGasFees()]).then(obj => {
             var price = obj[0]["result"]["ethusd"]
             var gasFeesAPI = obj[1]["result"]["SafeGasPrice"]
 
@@ -86,9 +87,7 @@
 
             low.innerHTML = Math.round(calculateFee(gasFeesAPI, uploadGasLim, price)) + "$"
             tax.innerHTML = Math.round(calculateFee(gasFeesAPI, approve, price)) + "$"
-
-        }).setInterval(() => {
-            
+            })
         }, 1000);
 
 
