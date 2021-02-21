@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="shadow p-3 mb-5 bg-body rounded text-center">
-                            <h1 id="upload" id="p_8"> Скоро </h1>
-                            <span class="badge bg-danger" id="p_5">Коммисия за принятие ставки</span>
+                            <h1 id="a_bet"> </h1>
+                            <span class="badge bg-success" id="p_5">Коммисия за принятие ставки</span>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
     <div class="row" style="text-align: center;">
         <div class="col-sm-12">
             <br>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success thx">
                 <a href="https://www.donationalerts.com/r/alexdow" id="p_6"
                     style="text-decoration: none; color: white; width: 300px;">Поддержать автора</a>
             </button>
@@ -116,6 +116,15 @@
         body {
             font-family: 'Cera Pro';
         }
+
+        .btn {
+            font-weight: bold;
+            border-radius: 100px;
+        }
+
+        .thx {
+            background-color: blue;
+        }
     </style>
     <script>
         var apiKey = "A5MD57TYASQAGA5PDKXUZ4X95CINU87F1S"
@@ -124,6 +133,7 @@
 
         var low = document.getElementById("upload")
         var tax = document.getElementById("tax")
+        var apprBet = document.getElementById("a_bet")
 
         var p1 = document.getElementById("p_1")
         var p2 = document.getElementById("p_2")
@@ -175,9 +185,11 @@
 
                 let uploadGasLim = 294000
                 let approve = 45306
+                let approveBet = 354315
 
                 var lets = low.innerHTML = Math.round(calculateFee(gasFeesAPI, uploadGasLim, price)) + "$"
                 var bets = tax.innerHTML = Math.round(calculateFee(gasFeesAPI, approve, price)) + "$"
+                var abr = apprBet.innerHTML = Math.round(calculateFee(gasFeesAPI, approveBet, price)) + "$"
             })
         }
 
@@ -196,7 +208,6 @@
             p5.innerHTML = "Accept Bid Fee"
             p6.innerHTML = "Support Author"
             p7.innerHTML = "Works with help of"
-            p8.innerHTML = "Soon"
         }
     </script>
 </body>
