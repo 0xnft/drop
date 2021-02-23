@@ -175,13 +175,14 @@
             Promise.all([getPrices(), getGasFees()]).then(obj => {
                 var price = obj[0]["result"]["ethusd"]
                 var gasFeesAPI = obj[1]["result"]["SafeGasPrice"]
+                var diapason = obj[1]["result"]["ProposeGasPrice"]
 
                 let uploadGasLim = 294000
                 let approve = 45306
                 let approveBet = 354315
 
-                var lets = low.innerHTML = Math.round(calculateFee(gasFeesAPI, uploadGasLim, price)) + "$"
-                var bets = tax.innerHTML = Math.round(calculateFee(gasFeesAPI, approve, price)) + "$"
+                var lets = low.innerHTML = Math.round(calculateFee(gasFeesAPI, uploadGasLim, price)) + "$" + " —  " + Math.round(calculateFee(diapason, uploadGasLim, price)) + "$"
+                var bets = tax.innerHTML = Math.round(calculateFee(gasFeesAPI, approve, price)) + "$" + " —  " + Math.round(calculateFee(diapason, approve, price)) + "$"
                 var abr = apprBet.innerHTML = Math.round(calculateFee(gasFeesAPI, approveBet, price)) + "$"
             })
         }
@@ -193,7 +194,7 @@
 
         instantGratification(updatePrices, 5000);
 
-        if (getNavigatorLanguage() != "ru-RU") {
+        if (getNavigatorLanguage() == "ru-RU") {
             p1.innerHTML = "Rarible: drop price calculator"
             p2.innerHTML = "Prices can be quoted in approximately real time"
             p3.innerText = "Minting price"
